@@ -1,0 +1,81 @@
+/* components/products/products.wxss */
+.products{
+  display:flex;
+  color:#888;
+  height:100%;
+  background-color:#f1f2f3;
+}
+.typelist{
+  width:30%;
+  height:100%;
+  background-color:#fff;
+  overflow: auto;
+}
+.type-active{
+  color: #c82829;
+}
+.typeitem{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid 1px #e0e0e0;
+  position: relative;
+}
+.typenum{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;  
+  color: #fff;
+  background-color: #f00;
+  border-radius: 50%;
+  font-size: 25rpx;
+  position: absolute;
+  top:0px;
+  right:0px;
+}
+.productlist{
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.product{
+  height: 170rpx;
+  margin: 10px;
+  border-bottom: solid 1px #e0e0e0;
+  display: flex;
+  padding-bottom: 5px;
+}
+.productimg{
+  flex:0 0 33%;
+}
+.productimg>image{
+  width: 100%;
+  height: 100%;
+}
+.productinfo{
+  flex: 1;
+  padding-left: 10px;
+}
+.numinput{
+  width: 60px;
+  height: 20px;
+  border: solid 1px #e0e0e0;
+  display: flex;
+}
+.numinput>view{
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.numinput>.num{
+  background-color: #fff;
+}
+.pinfo-num{
+  display: flex;
+  justify-content: flex-end;
+}

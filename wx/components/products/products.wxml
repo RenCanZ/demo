@@ -1,0 +1,28 @@
+<!--components/products/products.wxml-->
+<view class="products">
+  <view class="typelist" wx:if="{{types.length > 0}}">
+    <view wx:for="{{types}}" wx:for-item="type" data-id="{{index}}" wx:key="" class="typeitem {{nowid == index ?'type-active':''}}" catchtap='onClickType'>
+      <text>{{type.title}}</text>
+      <view wx:if="{{type.num > 0}}" class="typenum">{{type.num}}</view> 
+    </view>
+  </view>
+  <view class="productlist">
+    <view class="product" wx:for="{{products}}" wx:for-item="product" wx:if="{{types.length == 0 || types[nowid].typeid == product.typeid}}" wx:key="">
+      <view class="productimg">
+        <image src="{{product.picurl}}"></image>
+      </view>
+      <view class="productinfo">
+        <view style='color:#080808; font-size:12px;'>{{product.title}}</view>
+        <view class='txt-12' style='text-decoration: line-through; font-size:12px;'>原价:￥<text>{{product.price}}</text></view>
+        <view class='txt-12' style='color:#4caf50; font-size:12px;'>折扣价:￥<text>{{product.pricezk}}</text></view>
+      </view>
+      <view class='pinfo-num'>
+        <view class="numinput">
+          <view class='back-gray' data-id="{{index}}" catchtap='decNum'>-</view>
+          <view class='num'>{{product.num}}</view>
+          <view class='back-gray' data-id="{{index}}" catchtap='incNum'>+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

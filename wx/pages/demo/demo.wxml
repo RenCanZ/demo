@@ -1,0 +1,41 @@
+<!--pages/demo/demo.wxml-->
+<swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}" autoplay="{{autoplay}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" style="width:100%;height:150px;"/>
+    </swiper-item>
+  </block>
+</swiper>
+<!--搜索框-->
+<view class="block-row-colcenter txt-12 search" catchtap='goSearch'>
+  <view class='col-11'>
+    <text style='margin-left:10px;font-size:10px;'>请输入搜索内容</text>
+  </view>
+  <view class='col-1' style='margin-top:2px;'>
+    <icon type='search' size='15'></icon>
+  </view>
+</view> 
+<view class='block-row mynavlist'>
+  <view class='block-col-colcenter' wx:for="{{list}}" wx:key="">
+    <view class='myicon block-row-bothcenter' catchtap='gotoProductlist'>
+      <image src="/images/{{item.icon1}}" mode="widthFix"></image>
+    </view>
+    <view class='txt-10'>{{item.title1}}</view>
+    <image src='/images/{{item.icon2}}' mode="widthFix" style="width:80%;"></image>
+    <view class='txt-10 navtxt'>{{item.title2}}</view>
+  </view>
+</view>
+<view class="banner" style="background-image:url(/images/1.png);background-repeat:no-repeat;">
+  <!-- <image mode="widthFix" style="background-image:url(/images/1.png);background-repeat:no-repeat;"></image> -->
+  <view class="height-banner"></view>
+  <view class="on-banner">
+    <view wx:for="{{listUrl}}">
+      <image src="/images/{{item.img1}}" mode="widthFix"></image>
+      <image src="/images/{{item.img2}}" mode="widthFix"></image>
+      <image src="/images/{{item.img3}}" mode="widthFix"></image>
+    </view>
+  </view>
+</view>
+<view class="recom">
+  <view class="recom-name"><text>今日推荐 限时秒杀</text></view>
+</view>

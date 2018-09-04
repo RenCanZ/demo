@@ -1,0 +1,26 @@
+<!--pages/search/search.wxml-->
+<!--搜索框-->
+<view class="block-row-colcenter txt-12 search">
+  <view class='col-11'>
+    <input style='margin-left:10px;color:#c0c0c0;' bindconfirm='onSearch' bindinput="myinput" value="{{str}}" placeholder='请输入搜索内容'></input>
+  </view>
+  <view class='col-1' style='margin-top:2px;' catchtap='onSearch'>
+    <icon type='search' size='15'></icon>
+  </view>
+</view>
+<!--搜索框-->
+
+<!--条件项列表框-->
+<view class='line-layout' style='margin:5px;'>
+  <!--一个条件项-->
+  <view class='tagitem' wx:for="{{taglist}}" wx:for-index="id" wx:key=''>
+    <text>{{item}}</text>
+    <!--下面到data-id 是自定义属性 通过这个来给点击事件传值 -->
+    <icon type='clear' catchtap='delTagitem' data-id="{{id}}" size='15' color='#f00' style='position:relative;top:-10px;left:10px;'></icon>
+  </view>
+  <!--一个条件项-->
+</view>
+<!--条件项列表框-->
+<view style='flex:1;'>
+  <component-products productlist="{{plist}}" typelist="{{tlist}}" ></component-products>
+</view>

@@ -1,0 +1,73 @@
+/* pages/demo/demo.wxss */
+.mynavlist{
+  margin: 5px;
+  color: #808080;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display:flex;
+  justify-content:space-around;
+}
+.mynavlist image{
+  width:100%;
+  display:flex;
+}
+.mynavlist view{
+  margin-bottom:5px;
+}
+.navtxt{
+  margin-top: 5px;
+}
+.myicon{ 
+  background-color: #c8a15c;
+  width: 100%;
+  border-radius: 50%;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.navtxt{
+  color:#c8a15c;
+  font-size: 10px;
+}
+.search{
+  border: solid 1px #e0e0e0;
+  color: #c0c0c0;
+  border-radius: 5px;
+  height: 30px;
+  margin: 5px;
+}
+.banner {
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+}
+.height-banner {
+  width:100%;
+  height:80px;
+}
+.on-banner{
+  width:100%;
+  display:flex;
+  padding-left:8px;
+}
+.on-banner view {
+  flex:1;
+  display:flex;
+  flex-direction:column;  
+}
+.on-banner image {
+  width:95%;
+  padding-top:8px;
+}
+.recom {
+  background:#e0e0e0;
+  padding:8px;
+  display:flex;
+  margin-top:10px;
+}
+.recom view{ 
+  background:#fff;
+}
+.recom-name {
+  width:100%;
+  text-align:center;
+}
