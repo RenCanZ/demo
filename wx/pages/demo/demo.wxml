@@ -26,7 +26,6 @@
   </view>
 </view>
 <view class="banner" style="background-image:url(/images/1.png);background-repeat:no-repeat;">
-  <!-- <image mode="widthFix" style="background-image:url(/images/1.png);background-repeat:no-repeat;"></image> -->
   <view class="height-banner"></view>
   <view class="on-banner">
     <view wx:for="{{listUrl}}">

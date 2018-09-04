@@ -2,15 +2,28 @@
   "pages": [
     "pages/demo/demo",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/search/search",
     "pages/productlist/productlist",
-    "components/products/products"
+    "components/products/products",
+    "pages/user/user",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/demo/demo",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "用户中心"
+      }
+    ]
   }
 }

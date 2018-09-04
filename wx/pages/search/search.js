@@ -50,10 +50,7 @@ Page({
         sid:glob.sessionid
       },
       type:'post',
-      success:function (res) {
-        console.log(res);
-      },
-      complete: function() {
+      complete: function(res) {
         wx.hideLoading();
       },
     });
