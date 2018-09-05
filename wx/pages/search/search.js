@@ -114,7 +114,7 @@ Page({
   onLoad: function (options) {
     var _this = this;
     this.loadStr(function (res) {
-      console.log(res);
+      //console.log(res);
       if(res) {
         var list = _this.data.taglist;
         list.push(res);

@@ -4,7 +4,7 @@ App({
     this.login();
     var _this = this;
     this.getopenid(function (openid) {
-      _this.addOpenid(openid);
+      _this.addOpenid(openid);      
     });
   },
   getopenid: function (callback) {
@@ -13,8 +13,8 @@ App({
       //获取code
       success: function (res) {
         var code = res.code; //返回code
-        var appId = 'wxc853feca73955769';
-        var secret = '70ee287d1fa0362d591ddbfdb7cf5816';
+        var appId = 'wx1737f8d55ae0d897';
+        var secret = '4896a9132cefba12a01e1132d5c1c23e';
         wx.request({
           url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + code + '&grant_type=authorization_code',
           data: {},
@@ -22,8 +22,10 @@ App({
             'content-type': 'json'
           },
           success: function (res) {
-            var openid = res.data.openid //返回openid
-            // console.log(openid);
+            var openid = res.data.openid; //返回openid
+            var session_key = res.data.session_key;
+            _this.globalData.session_key = session_key;
+            _this.globalData.openid = openid;
             if (callback) {
               callback(openid);
             }
@@ -43,15 +45,16 @@ App({
     })
   },
   addOpenid: function (openid) {
-    console.log(openid);
+    //console.log(openid);
     wx.request({
       url: this.globalData.host + 'add.php',
       data: {
-        openid: openid
+        openid: openid,
+        update: 'insert'
       },
       type: 'post',
       complete: function (res) {
-        console.log(res);
+        // console.log(res);
       },
     })
   },
@@ -59,6 +62,7 @@ App({
     host:'http://localhost/demo/login/',
     userInfo: null,
     sessionid: null,
-    openid:null
+    openid:null,
+    session_key:null
   }
 })

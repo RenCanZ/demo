@@ -1,4 +1,6 @@
 // pages/login/login.js
+const app = getApp()
+const glob = app.globalData;
 Page({
 
   /**
@@ -6,10 +8,64 @@ Page({
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    userinfo: ''
+    userinfo: '',
+    phone:''
   },
   bindGetUserInfo: function (e) {
-    console.log(e.detail.userInfo)
+    var userinfo = e.detail.userInfo;
+    wx.request({
+      url: glob.host + 'add.php',
+      data: {
+        openid: glob.openid,
+        avatarUrl: userinfo.avatarUrl,
+        city: userinfo.city,
+        nickName: userinfo.nickName,
+        province: userinfo.province,
+        update: 'update'        
+      },
+      type: 'post',
+      success: function(res) {
+        //console.log(res);
+      },
+    })
+    this.setData({
+      userinfo: e.detail.userInfo
+    });
+  },
+  bindGetPhoneNumber: function (e) {
+    var _this = this;
+    wx.request({
+      url: glob.host + 'add.php',
+      data: {
+        session_key: glob.session_key,
+        openid: glob.openid,
+        iv: e.detail.iv,
+        encryptedData: e.detail.encryptedData,
+        update: 'phone'
+      },
+      type:'post',
+      success: function (res) {
+        _this.setData({
+          phone: res.data
+        });
+      },
+    })
+  },
+  selectPhone: function () {
+    var _this = this;
+    wx.request({
+      url: glob.host + 'add.php',
+      data: {
+        openid: glob.openid,
+        update: 'select'
+      },
+      type: 'post',
+      success: function(res) {
+        _this.setData({
+          phone: res.data
+        });
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -24,6 +80,7 @@ Page({
           wx.getUserInfo({
             withCredentials: true,
             success: function (res) {
+              _this.selectPhone();
               _this.setData({
                 userinfo: res.userInfo
               });
