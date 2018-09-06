@@ -9,7 +9,8 @@ Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userinfo: '',
-    phone:''
+    phone:'',
+    card:[]
   },
   bindGetUserInfo: function (e) {
     var userinfo = e.detail.userInfo;
@@ -41,6 +42,7 @@ Page({
         openid: glob.openid,
         iv: e.detail.iv,
         encryptedData: e.detail.encryptedData,
+        userinfo: _this.data.userinfo,
         update: 'phone'
       },
       type:'post',
@@ -67,11 +69,30 @@ Page({
       }
     })
   },
+  getcard: function (callback) {
+    wx.request({
+      url: 'http://192.168.1.185/youhuijuan/usercard.php',
+      data: {
+        openid: glob.openid
+      },
+      success: function(res) {
+        console.log(res);
+        if(callback) {
+          callback(res);
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var _this = this;
+    this.getcard(function (res) {
+      _this.setData({
+        card: res.data
+      });
+    });
     // 查看是否授权
     wx.getSetting({
       success: function (res) {

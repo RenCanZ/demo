@@ -6,7 +6,8 @@
     "pages/productlist/productlist",
     "components/products/products",
     "pages/user/user",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/cardlist/cardlist"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,6 +20,10 @@
       {
         "pagePath": "pages/demo/demo",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/cardlist/cardlist",
+        "text": "卡券中心"
       },
       {
         "pagePath": "pages/login/login",

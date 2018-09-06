@@ -1,0 +1,13 @@
+<!--pages/cardlist/cardlist.wxml-->
+ <view class='card-content'>
+  <view class="card"  wx:for="{{card}}" wx:if="{{item.num > 0}}" wx:key="">
+    <view class="card-details color-df4">
+      <text>{{item.title}}</text>
+      <text>满${{item.tiaojian}} - ${{item.dikoujine}}</text>
+      <text>有效期:{{item.atime}}--{{item.etime}}</text>
+    </view>
+    <view class="card-true">
+      <view class="color-df4" data-juanid="{{item.juanid}}" catchtap='setCard'>领取卡券</view>
+    </view>
+  </view>
+ </view>

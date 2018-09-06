@@ -1,5 +1,6 @@
 <?php
 	include_once "./wxBizDataCrypt.php";
+	$url = 'http://192.168.1.185/wechat/save_customers.php';
 	$user = 'root';
 	$password = '123456';
 	$dsn = 'mysql:host=localhost;dbname=wx;charset=utf8';
@@ -20,7 +21,8 @@
 			$res = $model -> update($openid,$nickName,$city,$avatarUrl,$province,$pdo);
 			var_dump($res);
 			break;
-		case 'phone':			
+		case 'phone':
+			$userinfo = json_decode($_REQUEST['userinfo'],true);
 			$sessionKey = $_REQUEST['session_key'];
 			$encryptedData= $_REQUEST['encryptedData'];
 			$iv = $_REQUEST['iv'];
@@ -30,6 +32,8 @@
 				//print($data . "\n");
 				$data = json_decode($data,true);
 				$phone = $data['phoneNumber'];
+				$data = json_encode(array('phone' => $phone,'nickName' => $userinfo['nickName'],'face' => $userinfo['avatarUrl'],'sex' => $userinfo['gender'],'openid' => $openid,'appid' => $appid));
+				$model -> mycurl($url,$data);
 				$res = $model -> phone($openid,$phone,$pdo);
 				echo $phone;
 			} else {
@@ -102,5 +106,23 @@
 				}
 			}
 			return $select;
+		}
+		public function mycurl ($url,$data)
+		{
+			if(empty($url)) {
+				return false;
+			}	
+			$ch = curl_init($url);
+			curl_setopt($ch,CURLOPT_POST,1);
+			curl_setopt($ch,CURLOPT_POSTFIELDS,array('data' => $data));
+			curl_setopt($ch,CURLOPT_HEADER, 0);
+			if(substr($url,5) == 'https') {
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+			}
+			curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+			$output = curl_exec($ch);
+			curl_close($ch);
+			//return $output;
 		}
 	}

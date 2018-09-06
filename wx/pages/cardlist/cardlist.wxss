@@ -1,5 +1,3 @@
-/* pages/login/login.wxss */
-
 /* pages/cardlist/cardlist.wxss */
 .color-df4{
   background-color: #df4133;

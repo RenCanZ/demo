@@ -1,6 +1,6 @@
 <!--pages/login/login.wxml-->
 <button wx:if="{{userinfo == ''}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button>
-<view wx:if="{{userinfo != ''}}">
+<view wx:if="{{userinfo != ''}}" style="background-color:#f0f0f0">
   <open-data type="userAvatarUrl"></open-data>
   <open-data type="userNickName"></open-data>
   <open-data type="userProvince"></open-data>
@@ -8,3 +8,15 @@
   <button wx:if="{{phone == ''}}" open-type="getPhoneNumber" bindgetphonenumber="bindGetPhoneNumber">绑定手机</button>
   <text>{{phone}}</text>
 </view>
+ <view>
+  <view class="card"  wx:for="{{card}}" wx:key="">
+    <view class="card-details color-df4">
+      <text>{{item.title}}</text>
+      <text>满${{item.tiaojian}} - ${{item.dikoujine}}</text>
+      <text>有效期:{{item.atime}}--{{item.etime}}</text>
+    </view>
+    <view class="card-true">
+      <view class="color-df4" data-juanid="{{item.juanid}}" catchtap='setCard'>使用卡券</view>
+    </view>
+  </view>
+ </view>
