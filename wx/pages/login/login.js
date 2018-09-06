@@ -76,7 +76,7 @@ Page({
         openid: glob.openid
       },
       success: function(res) {
-        console.log(res);
+        //console.log(res);
         if(callback) {
           callback(res);
         }
